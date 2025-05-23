@@ -51,7 +51,11 @@ export default function Skills() {
             <motion.div
               key={index}
               whileHover={{ scale: 1.08 }}
-              className="group flex flex-col items-center justify-center bg-[#00283a] hover:bg-[#004e75] text-white p-5 rounded-xl shadow-md transition duration-300"
+              className="group flex flex-col items-center justify-center 
+                         bg-gradient-to-br from-[#003e63] to-[#00283a]
+                         text-white p-5 rounded-xl shadow-lg 
+                         hover:shadow-xl hover:shadow-[#004e75]/30 
+                         hover:ring-2 hover:ring-blue-500/30 transition duration-300"
             >
               {skill.icon}
               <span className="mt-2 text-sm text-[#cdd9e5] group-hover:text-white transition">
