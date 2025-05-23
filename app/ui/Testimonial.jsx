@@ -18,22 +18,22 @@ const profiles = [
     title: "Interior designer",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias officia, debitis minus repellat saepe? Deleniti blanditiis optio inventore nulla dicta fugiat culpa quis unde, sequi debitis ex ab! Sapiente vitae rem tempore sunt! Aperiam eveniet mollitia, quae architecto nostrum.",
-    image: "/profile.jpeg", // Replace with actual image URL
+    image: "/developer-image.webp", // Replace with actual image URL
   },
   // Add more profiles as needed
   {
-    name: "bilkis",
+    name: "Suzan",
     title: "Interior designer",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias officia, debitis minus repellat saepe? Deleniti blanditiis optio inventore nulla dicta fugiat culpa quis unde, sequi debitis ex ab! Sapiente vitae rem tempore sunt! Aperiam eveniet mollitia, quae architecto nostrum.",
-    image: "/profile.jpeg", // Replace with actual image URL
+image: "/developer-image.webp", // Replace with actual image URL
   },
   {
     name: "Paul Freeman",
     title: "Interior designer",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias officia, debitis minus repellat saepe? Deleniti blanditiis optio inventore nulla dicta fugiat culpa quis unde, sequi debitis ex ab! Sapiente vitae rem tempore sunt! Aperiam eveniet mollitia, quae architecto nostrum.",
-    image: "/profile.jpeg", // Replace with actual image URL
+    image: "/developer-image.webp", // Replace with actual image URL
   },
 ];
 
@@ -52,7 +52,7 @@ const Testimonial = () => {
             <div className="flex flex-col items-center justify-center ">
               <div className="bg-black rounded-full  mb-[20px] text-center flex justify-center items-center w-[70px] h-[70px] relative">
                 <Image
-                  src="/profile.jpeg"
+                  src={profile.image}
                   layout="fill"
                   objectFit="cover"
                   quality={100}

@@ -17,7 +17,7 @@ const UiWrapper = ({ children, bannerProps, layoutStyles }) => {
           {/* right side content start  */}
           <div
             id="_prt-content_"
-            className="lg:w-[67%]  h-full  w-full  z-[2] shadow-2xl relative overflow-hidden"
+            className="lg:w-[67%]  h-full  w-full  z-[2] shadow relative overflow-hidden"
             style={{ ...layoutStyles }}
           >
             {children}

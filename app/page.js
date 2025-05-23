@@ -14,6 +14,7 @@ import BlogCard from "./ui/BlogCard";
 import UiWrapper from "./ui/UiWrapper";
 import Section from "./ui/Section";
 import Skills from "./ui/Skills";
+import ProjectCard from "./ui/ProjectCard";
 
 
 
@@ -147,7 +148,11 @@ export default function Home() {
       </Section>
 
       {/* my story section end  */}
-     
+     <Section id="project-section" className="mb-[40px]">
+        <SectionTitle title="My projects" number="02" />
+        <ProjectCard/>
+
+      </Section>
       {/* video resume start  */}
       <Section className="mb-[40px]" id="video-resume">
         <SectionTitle title="Video resume" number="02" />
