@@ -1,29 +1,78 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  overflow: auto; /* Keep scrolling enabled */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* For WebKit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 500vh;
+  /* overflow-x: hidden; */
+}
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  transition: all 0.5s;
+}
+
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* elements top overlay  */
+.element_overlay {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.element_overlay::before {
+  content: "";
+  height: 8px;
+  width: calc(100% - 60px);
+  background-color: #00283a;
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px 5px 0 0;
+  opacity: 0.3;
 }
 
 @layer utilities {
@@ -31,3 +80,89 @@ body {
     text-wrap: balance;
   }
 }
+/* Ripple Effect Styles */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 76, 112, 0.4); /* Adjust color and opacity */
+  pointer-events: none; /* Prevent interaction with the ripple */
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out forwards;
+  z-index: 99; /* Ensure the ripple is on top */
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4); /* Adjust size as needed */
+    opacity: 0;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #70ba65; /* Gray background */
+  border-radius: 50%; /* Full rounded */
+  opacity: 0 !important;
+  color: #fff !important;
+  top: 25px !important;
+  transition: all 0.5s ease !important;
+}
+.swiper-button-next {
+  transform: translateX(-50px);
+}
+.swiper-button-prev {
+  transform: translateX(50px);
+}
+.swiper-button-disabled {
+  background-color: black;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+
+.group:hover .swiper-button-prev {
+  transform: translateX(0);
+  opacity: 1 !important;
+}
+.group:hover .swiper-button-next {
+  transform: translateX(0);
+  opacity: 1 !important;
+}
+
+.swiper-scrollbar-drag {
+  background-color: #70ba65 !important;
+  height: 1px !important;
+}
+
+.project-card .swiper-button-next,
+.project-card .swiper-button-prev {
+  width: 20px !important;
+  height: 20px !important;
+  top: 50% !important;
+}
+
+.project-card .swiper-button-next::after,
+.project-card .swiper-button-prev::after {
+  font-size: 10px !important;
+}
+.swiper-scrollbar {
+  background-color: transparent !important;
+}
+
+.section {
+  opacity: .8; /* Initial opacity */
+  transform: scale(1.005);
+  transition: opacity 0.9s ease-in-out , transform 0.3s ease-in-out; /* Smooth transition */
+}
+.section.in-view {
+  opacity: 1; /* When in view, full opacity */
+  transform: scale(1);
+}
+
+
+

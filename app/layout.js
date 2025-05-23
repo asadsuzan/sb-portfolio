@@ -1,7 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "./ui/header";
+import RippleEffect from "./ui/RippleEffect";
+import LoaderWrapper from "./ui/LoaderWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +14,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={` font-sans bg-app-bg text-primary-text p-0  lg:py-3 lg:px-[30px] xl:px-[60px]`}
+      >
+        <LoaderWrapper>
+          <Header />
+          {/* <RippleEffect /> */}
+
+          {children}
+        </LoaderWrapper>
+      </body>
     </html>
   );
 }

@@ -1,0 +1,42 @@
+.active-status {
+  transform: translate(-10px, -30%);
+  border-top: 2px solid #00283a;
+  border-left: 2px solid #00283a;
+  border-bottom: 2px solid #00283a;
+  transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.active-status::after {
+  content: "available for hire";
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: transform 0.3s linear;
+  transition-delay: 0.2s;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: white;
+}
+
+.active-status:hover {
+  width: 130%;
+  height: 20px;
+  border-radius: 7px;
+  transform: translate(10px, -30%);
+}
+.active-status:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleX(1);
+}
