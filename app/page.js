@@ -155,13 +155,13 @@ export default function Home() {
       </Section>
       {/* video resume start  */}
       <Section className="mb-[40px]" id="video-resume">
-        <SectionTitle title="Video resume" number="02" />
+        <SectionTitle title="Video resume" number="03" />
         <VideoResume />
       </Section>
       {/* video resume end  */}
       {/* services section start  */}
       <Section id="services-section" className="mb-[40px]">
-        <SectionTitle title="My services" number="03" />
+        <SectionTitle title="My services" number="04" />
         <div className="grid grid-cols-1 md:grid-cols-2  gap-[30px] lg:gap-y-[30px] lg:gap-x-[15px] xl:gap-[30px]">
           {services.map((service) => (
             <ServiceCard
@@ -175,7 +175,7 @@ export default function Home() {
       {/* services section end  */}
       {/* pricing section start  */}
       <Section id="pricing-section" className="mb-[40px]">
-        <SectionTitle title="pricing plans" number="04" />
+        <SectionTitle title="pricing plans" number="05" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] ">
           {pricing.map((item) => (
             <PricingCard
@@ -191,14 +191,14 @@ export default function Home() {
       {/* pricing section end  */}
       {/* testimonial section start here  */}
       <Section id="testimonial-section" className="mb-[40px] w-full">
-        <SectionTitle title="Testimonials" number="05" />
+        <SectionTitle title="Testimonials" number="06" />
 
         <Testimonial />
       </Section>
       {/* testimonial section start end  */}
       {/* latest blog section start start  */}
       <Section id="blog-section" className="mb-[40px]">
-        <SectionTitle title="Latest Publications" number="06" />
+        <SectionTitle title="Latest Publications" number="07" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
           <BlogCard />
           <BlogCard />
