@@ -38,6 +38,7 @@ const Banner = ({ title, content, children, bgpath, pageName }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  console.log(pageName)
   return (
     <div
       className="h-[60vh] max-h-[400px]  bg-center  lg:max-h-[500px]  w-full  bg-cover bg z-[1] relative mt-[80px] lg:mt-[68px]  rounded-b-[20px] after:content-[''] after:h-full after:w-full after:absolute after:left-0 after:top-0 after:bg-[#000] after:opacity-0 bg-no-repeat after:z-[-1] transition-all bg-fixed duration-500 "
