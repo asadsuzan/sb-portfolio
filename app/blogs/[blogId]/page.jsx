@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
+export const dynamic = 'force-dynamic'; // optional
+export const revalidate = 0;
 export default function BlogDetails() {
   return (
     <section className="bg-[#011c2b] text-white px-6 md:px-10 py-20 min-h-screen">

@@ -26,6 +26,9 @@ import "swiper/css/scrollbar";
 
 import "swiper/css/effect-creative";
 import SectionTitle from "@/app/ui/SectionTitle";
+
+export const dynamic = 'force-dynamic'; // optional
+export const revalidate = 0;
 const projectDetails = {
   project: {
     title: "TaskMaster Pro",

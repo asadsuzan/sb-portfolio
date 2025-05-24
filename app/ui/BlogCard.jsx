@@ -7,7 +7,7 @@ const BlogCard = () => {
     <div className="bg-dark-navy element_overlay rounded-[10px] shadow-prt-shadow">
       {/* blog img  */}
 
-      <Link href="/" className="h-[220px]  block relative">
+      <Link href="blogs/dsfgdsg" className="h-[220px]  block relative">
         <Image
           src="/banner1.jpg"
           layout="fill"
@@ -30,7 +30,7 @@ const BlogCard = () => {
 
         {/* blog heading  */}
         <h5 className="mb-[20px] font-extrabold tracking-[0px] text-[20px]">
-          <Link href="/">Follow your own design process.</Link>
+          <Link href="blogs/dsfgdsg">Follow your own design process.</Link>
         </h5>
 
         {/* divider  */}
