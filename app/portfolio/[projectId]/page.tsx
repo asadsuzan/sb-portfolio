@@ -1,17 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
-import UiWrapper from "@/app/ui/UiWrapper";
-import Section from "@/app/ui/Section";
-import ElementDivider from "@/app/ui/ElementDivider";
 import Image from "next/image";
 import { IoMdArrowDropright } from "react-icons/io";
 import { FiExternalLink } from "react-icons/fi";
 import { MdOutlineCategory } from "react-icons/md";
 import { MdPersonAddAlt1 } from "react-icons/md";
 import { TbCalendarTime } from "react-icons/tb";
-
-// import ElementDivider from "./ElementDivider";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCreative, Scrollbar } from "swiper/modules";
 import { FaGithub } from "react-icons/fa";
@@ -25,127 +20,65 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import "swiper/css/effect-creative";
+import UiWrapper from "@/app/ui/UiWrapper";
+import Section from "@/app/ui/Section";
+import ElementDivider from "@/app/ui/ElementDivider";
 import SectionTitle from "@/app/ui/SectionTitle";
+import { TProject } from "@/app/types";
 
-export const dynamic = 'force-dynamic'; // optional
-export const revalidate = 0;
-const projectDetails = {
-  project: {
-    title: "TaskMaster Pro",
-    shortDescription:
-      "A full-featured task management app designed for remote teams to collaborate efficiently.",
-    info: {
-      status: "Completed", // Status of the project (e.g., 'Completed', 'In Progress', 'On Hold')
-      category: "Web Application", // Category (e.g., 'Web Application', 'Mobile App', 'API')
-      client: "Acme Inc.", // Client name if it's a client project, or 'Personal Project'/'Practice Project' for your own work
-      liveDemoLink: "https://taskmaster-pro.com",
-      repositoryLink: {
-        github: "https://github.com/taskmasterpro/taskmasterpro",
-        bitbucket: "https://bitbucket.org/taskmasterpro/taskmasterpro",
-      },
 
-      timeframe: {
-        startDate: "2024-01-01", // Project start date
-        endDate: "2024-02-15", // Project end date or expected completion date
-      },
-    },
-    overview: {
-      context:
-        "With the rise of remote work, teams needed a centralized platform to manage tasks, set priorities, and communicate without getting lost in multiple communication channels. TaskMaster Pro was built to provide a simple, all-in-one solution for task tracking and team collaboration.",
-      targetAudience:
-        "Remote teams, freelancers, and small-to-medium-sized businesses looking for a project management tool to streamline workflow",
-      objectives: [
-        "Create a user-friendly task management system with real-time updates.",
-        "Build collaborative features like task assignments, file sharing, and messaging.",
-        "Ensure smooth performance across all devices.",
-      ],
-    },
-    features: [
-      "Real-Time Task Updates using WebSocket.",
-      "Task assignments with deadlines and priority tags.",
-      "Built-in messaging for team communication.",
-      "File attachments for task-related documents.",
-      "Visual progress tracking with progress bars.",
-      "Fully responsive design.",
-    ],
-    technologyStack: {
-      frontend: "React.js with Tailwind CSS for styling the user interface.",
-      backend: "Node.js with Express.js for the API.",
-      database: "MongoDB for task and user management.",
-      realTime:
-        "WebSocket (using Socket.io) for real-time task updates and team messaging.",
-      deployment:
-        "Deployed on AWS with Docker for containerization and scalability.",
-      thirdPartyAPI:
-        "Integrated the Google Drive API for file attachments and management.",
-    },
-    challengesAndSolutions: [
-      {
-        challenge: "Real-time task updates.",
-        solution:
-          "Implemented WebSocket communication using Socket.io for instant task and message syncing.",
-      },
-      {
-        challenge: "Handling large file attachments.",
-        solution:
-          "Integrated Google Drive API to allow users to attach files without overloading server storage.",
-      },
-    ],
-    media: {
-      screenshots: [
-        "https://example.com/screenshots/landing-page.png",
-        "https://example.com/screenshots/task-view.png",
-      ],
-      demoVideo: "https://example.com/videos/taskmaster-demo.mp4",
-    },
-    developmentProcess: {
-      planning: "Created wireframes and user stories to outline key features.",
-      workflow:
-        "Used Agile methodology with bi-weekly sprints and Git for version control.",
-      tools: [
-        "Trello for task management",
-        "Figma for UI design",
-        "GitHub for code collaboration",
-      ],
-    },
-    rolesAndResponsibilities: {
-      team: [
-        {
-          name: "John Doe",
-          role: "Frontend Developer",
-          responsibilities: [
-            "Developed the main UI components",
-            "Integrated real-time updates with WebSocket",
-          ],
-        },
-        {
-          name: "Jane Smith",
-          role: "Backend Developer",
-          responsibilities: [
-            "Created API endpoints for task management",
-            "Integrated Google Drive API",
-          ],
-        },
-      ],
-    },
-    lessonsLearned: [
-      "Improved real-time web app development skills using WebSocket.",
-      "Gained experience with Google Drive API for file management.",
-    ],
-    nextSteps: [
-      "Add calendar integration for task scheduling.",
-      "Implement AI-powered task suggestions based on user activity.",
-    ],
 
-    testimonials: [
-      {
-        user: "Alice Brown",
-        feedback:
-          "TaskMaster Pro streamlined our project management process and boosted team collaboration.",
-      },
-    ],
+const project : TProject={
+  basicInfo:{
+    "title": "TaskMaster Pro",
+  "slug": "taskmaster-pro",
+  "description": "A collaborative task management platform for remote teams."
   },
-};
+  meta:{
+    "status": "completed",
+  "category": "full-stack-development",
+  "client": "own",
+  "timeframe": "Oct 2023 – Jan 2024",
+  },
+links:{
+    "githubUrl": "https://github.com/yourusername/taskmaster-pro",
+  "liveDemoUrl": "https://taskmasterpro.live",
+},
+  overview: {
+    context: "With the rise of remote work, teams needed a centralized platform to manage tasks, set priorities, and communicate without getting lost in multiple communication channels. TaskMaster Pro was built to provide a simple, all-in-one solution for task tracking and team collaboration.",
+    targetAudience: "Remote teams, freelancers, and small-to-medium-sized businesses looking for a project management tool to streamline workflow",
+    objectives: [
+      "Create a user-friendly task management system with real-time updates.",
+      "Build collaborative features like task assignments, file sharing, and messaging.",
+      "Ensure smooth performance across all devices."
+    ]
+  },
+  screenshots: [
+    "/images/projects/taskmaster/ss1.png",
+    "/images/projects/taskmaster/ss2.png",
+    "/images/projects/taskmaster/ss3.png"
+  ],
+  features: [
+    "Real-Time Task Updates using WebSocket.",
+    "Task assignments with deadlines and priority tags.",
+    "Built-in messaging for team communication.",
+    "File attachments for task-related documents.",
+    "Visual progress tracking with progress bars.",
+    "Fully responsive design."
+  ],
+  technologies: {
+    "frontend": "React.js with Tailwind CSS",
+    "backend": "Node.js with Express.js",
+    "database": "MongoDB",
+    "realTime": "Socket.io (WebSocket)",
+    "deployment": "AWS with Docker",
+    "thirdPartyAPI": "Google Drive API"
+  },
+  lessonsLearned: [
+    "Improved real-time web app development skills using WebSocket.",
+    "Gained experience with Google Drive API for file management."
+  ]
+}
 
 const page = () => {
   const { projectId } = useParams();
@@ -170,28 +103,42 @@ const page = () => {
   return (
     <UiWrapper bannerProps={bannerProps} layoutStyles={style}>
       {/* project info  */}
-      <ProjectInfo info={projectDetails.project.info} />
+      <ProjectInfo 
+
+        basicInfo={project.basicInfo}
+        meta={project.meta}
+        links={project.links}
+      
+      />
 
       {/* project overview  */}
-      <ProjectOverview overview={projectDetails?.project?.overview} />
+      <ProjectOverview overview={project?.overview} />
       {/* project screenshot */}
       <ProjectImgSlide />
 
       {/* project features */}
-      <ProjectFeatures features={projectDetails.project.features} />
+      <ProjectFeatures features={project?.features} />
 
       {/* project technology stack */}
-      <ProjectTechStack techStack={projectDetails.project.technologyStack} />
+      <ProjectTechStack techStack={project?.technologies} />
 
       {/* lesson learned  */}
-      <LessonLearned lessonsLearned={projectDetails.project.lessonsLearned} />
+      <LessonLearned lessonsLearned={project?.lessonsLearned} />
     </UiWrapper>
   );
 };
 
 // project overview
 
-function ProjectOverview({ overview }) {
+interface OverviewProps {
+  overview: {
+    context: string;
+    targetAudience: string;
+    objectives: string[];
+  };
+}
+
+function ProjectOverview({ overview }: OverviewProps) {
   const { context, targetAudience, objectives } = overview;
 
   return (
@@ -235,7 +182,11 @@ function ProjectOverview({ overview }) {
 
 // project features
 
-function ProjectFeatures({ features }) {
+interface ProjectFeaturesProps {
+  features: string[];
+}
+
+function ProjectFeatures({ features }: ProjectFeaturesProps) {
   return (
     <Section id="project-features">
       <SectionTitle title="project features" number="03" />
@@ -257,7 +208,18 @@ function ProjectFeatures({ features }) {
 
 // project techStack
 
-function ProjectTechStack({ techStack }) {
+interface TechStackProps {
+  techStack: {
+    frontend: string;
+    backend: string;
+    database: string;
+    realTime: string;
+    deployment: string;
+    thirdPartyAPI: string;
+  };
+}
+
+function ProjectTechStack({ techStack }: TechStackProps) {
   const { frontend, backend, database, realTime, deployment, thirdPartyAPI } =
     techStack;
 
@@ -276,7 +238,7 @@ function ProjectTechStack({ techStack }) {
               </span>
 
               <span className="text-sm font-bold text-[#919ca1] leading-[1.5]">
-                {value}
+                {String(value)} 
               </span>
             </li>
           ))}
@@ -286,12 +248,32 @@ function ProjectTechStack({ techStack }) {
   );
 }
 
+
+// Project info props
+interface ProjectInfoProps {
+basicInfo: {
+  title: string;
+  slug: string;
+  description: string;
+},
+meta: {
+  status: string;
+  category: string;
+  client: string;
+  timeframe: string;},
+links: {
+  githubUrl: string;
+  liveDemoUrl?: string;
+}
+
+}
 // project info
-function ProjectInfo({ info }) {
-  const { status, category, client, liveDemoLink, repositoryLink, timeframe } =
-    info;
-  const { github } = repositoryLink;
-  const { startDate, endDate } = timeframe;
+function ProjectInfo(info: ProjectInfoProps) {
+
+  const { title, slug, description } = info.basicInfo;
+  const { status, category, client, timeframe } = info.meta;
+  const { githubUrl, liveDemoUrl } = info.links;
+
 
   return (
     <Section id="project-info">
@@ -398,7 +380,7 @@ function ProjectInfo({ info }) {
           >
             <FiExternalLink
               size="20"
-              c
+              
               className="text-light-green group-hover:scale-110"
             />
             <span className="text-sm italic  font-bold">live demo</span>
@@ -409,7 +391,7 @@ function ProjectInfo({ info }) {
   );
 }
 
-// project description
+
 
 // project img slide
 
@@ -464,7 +446,13 @@ function ProjectImgSlide() {
 }
 
 // lesson learned
-function LessonLearned({ lessonsLearned }) {
+
+interface LessonLearnedProps {
+  lessonsLearned: string[];
+}
+
+
+function LessonLearned({ lessonsLearned }: LessonLearnedProps) {
   return (
     <Section id="lesson-learned">
       <SectionTitle title="lesson learned" number="05" />
