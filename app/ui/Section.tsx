@@ -1,7 +1,15 @@
 "use client";
 import { useEffect } from "react";
 
-const Section = ({ id, children }) => {
+type SectionProps = {
+  id: any;
+  children: any;
+  className?: string;
+};
+
+const Section = (
+  { id, children, className = "" }: SectionProps
+) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

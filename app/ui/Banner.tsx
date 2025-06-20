@@ -2,9 +2,10 @@
 import Link from "next/link";
 import styles from "../styles/banner.module.css";
 import { BiPlay } from "react-icons/bi";
-import Section from "./Section";
+
 import { scrollToElement } from "../utils";
 import { useState, useEffect, useRef } from "react";
+import Section from "./Section";
 const Banner = ({ title, content, children, bgpath, pageName }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const heroRef = useRef(null);
@@ -26,6 +27,7 @@ const Banner = ({ title, content, children, bgpath, pageName }) => {
     // Update overlay style
     setOverlayStyle({
       opacity: scrollPercent + 0.3, // Increase opacity as you scroll down
+      transform: "translateY(0%)", // or adjust as needed for your animation
     });
 
     setScrollPosition(scrollY);
@@ -82,7 +84,14 @@ const Banner = ({ title, content, children, bgpath, pageName }) => {
 };
 
 function BannerContent({ title, content, children, pageName }) {
-  const handleScroll = (e) => {
+  interface BannerContentProps {
+    title: string;
+    content: string;
+    children?: React.ReactNode;
+    pageName: string;
+  }
+
+  const handleScroll = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     console.log("video resume");
     scrollToElement("video-resume", 200); // Scroll to _prt-content_ over 1 second (1000ms)
   };

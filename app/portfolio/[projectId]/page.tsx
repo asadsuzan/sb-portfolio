@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -25,96 +25,82 @@ import Section from "@/app/ui/Section";
 import ElementDivider from "@/app/ui/ElementDivider";
 import SectionTitle from "@/app/ui/SectionTitle";
 import { TProject } from "@/app/types";
+import { getProjectBySlug } from "@/app/services/project";
 
 
 
-const project : TProject={
-  basicInfo:{
-    "title": "TaskMaster Pro",
-  "slug": "taskmaster-pro",
-  "description": "A collaborative task management platform for remote teams."
-  },
-  meta:{
-    "status": "completed",
-  "category": "full-stack-development",
-  "client": "own",
-  "timeframe": "Oct 2023 – Jan 2024",
-  },
-links:{
-    "githubUrl": "https://github.com/yourusername/taskmaster-pro",
-  "liveDemoUrl": "https://taskmasterpro.live",
-},
-  overview: {
-    context: "With the rise of remote work, teams needed a centralized platform to manage tasks, set priorities, and communicate without getting lost in multiple communication channels. TaskMaster Pro was built to provide a simple, all-in-one solution for task tracking and team collaboration.",
-    targetAudience: "Remote teams, freelancers, and small-to-medium-sized businesses looking for a project management tool to streamline workflow",
-    objectives: [
-      "Create a user-friendly task management system with real-time updates.",
-      "Build collaborative features like task assignments, file sharing, and messaging.",
-      "Ensure smooth performance across all devices."
-    ]
-  },
-  screenshots: [
-    "/images/projects/taskmaster/ss1.png",
-    "/images/projects/taskmaster/ss2.png",
-    "/images/projects/taskmaster/ss3.png"
-  ],
-  features: [
-    "Real-Time Task Updates using WebSocket.",
-    "Task assignments with deadlines and priority tags.",
-    "Built-in messaging for team communication.",
-    "File attachments for task-related documents.",
-    "Visual progress tracking with progress bars.",
-    "Fully responsive design."
-  ],
-  technologies: {
-    "frontend": "React.js with Tailwind CSS",
-    "backend": "Node.js with Express.js",
-    "database": "MongoDB",
-    "realTime": "Socket.io (WebSocket)",
-    "deployment": "AWS with Docker",
-    "thirdPartyAPI": "Google Drive API"
-  },
-  lessonsLearned: [
-    "Improved real-time web app development skills using WebSocket.",
-    "Gained experience with Google Drive API for file management."
-  ]
-}
+
 
 const page = () => {
   const { projectId } = useParams();
-  const bannerContent = (
-    <>
-      Sales Management
-      <br />
-      System - MERN!
-    </>
-  );
-  // Sales Management System - MERN
-  const bannerProps = {
-    title: "portfolio",
-    content: bannerContent,
-    bgpath: "./banner3.jpg",
-    pageName: "portfolio",
-  };
+  const [project, setProject] = useState<TProject | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+useEffect(() => {
+        const fetchProject = async () => {
+            try {
+                const data = await getProjectBySlug(projectId as string);
+            console.log("Fetched project data:", data);
+                setProject(data?.data || null);
+            } catch (error) {
+                console.error("Failed to fetch projects:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProject();
+    }, [])
+
+
+  
+
+
   const style = {
     marginTop: "-50px",
   };
 
+      const bannerProps = {
+    title: "portfolio",
+    content: project?.basicInfo?.title || "Project Title",
+    bgpath: "./banner3.jpg",
+    pageName: "portfolio",
+  };
+    if (loading) {
+    return (
+      
+        <Section id="loading" >
+          <div className="flex items-center justify-center h-[300px]">
+            <h2 className="text-2xl font-bold text-light-green">Loading...</h2>
+          </div>
+        </Section>
+    
+    );
+  }
+  if (!project) {
+    return (
+      <Section id="not-found">
+        <div className="flex items-center justify-center h-[300px]">
+          <h2 className="text-2xl font-bold text-light-green">Project not found</h2>
+        </div>
+      </Section>
+    );
+  }
   return (
     <UiWrapper bannerProps={bannerProps} layoutStyles={style}>
       {/* project info  */}
       <ProjectInfo 
 
-        basicInfo={project.basicInfo}
-        meta={project.meta}
-        links={project.links}
+        basicInfo={project?.basicInfo }
+        meta={project?.meta}
+        links={project?.links}
       
       />
 
       {/* project overview  */}
       <ProjectOverview overview={project?.overview} />
       {/* project screenshot */}
-      <ProjectImgSlide />
+      <ProjectImgSlide screenshots={project?.screenshots} />
 
       {/* project features */}
       <ProjectFeatures features={project?.features} />
@@ -270,6 +256,7 @@ links: {
 // project info
 function ProjectInfo(info: ProjectInfoProps) {
 
+
   const { title, slug, description } = info.basicInfo;
   const { status, category, client, timeframe } = info.meta;
   const { githubUrl, liveDemoUrl } = info.links;
@@ -395,12 +382,8 @@ function ProjectInfo(info: ProjectInfoProps) {
 
 // project img slide
 
-function ProjectImgSlide() {
-  const [images, setImages] = useState([
-    "/portfolio.png",
-    "/banner1.jpg",
-    "/banner2.jpg",
-  ]);
+function ProjectImgSlide({screenshots}: {screenshots?: string[]}) {
+ 
   return (
     <Section id="img-slide">
       <SectionTitle title="project screenshot" number="02" />
@@ -426,7 +409,7 @@ function ProjectImgSlide() {
         slidesPerView={1}
         className="w-full relative"
       >
-        {images.map((src, ind) => (
+        {screenshots.map((src, ind) => (
           <SwiperSlide key={ind}>
             <div className="w-full h-[200px] md:h-[300px]   bg-no-repeat bg-contain   relative mb-[20px]  border border-[#224454] bg-[#02162b]  rounded-[5px] overflow-hidden  transition-all  duration-1000 ease">
               <Image

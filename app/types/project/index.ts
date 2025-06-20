@@ -94,3 +94,20 @@ export interface TProject {
   };
   lessonsLearned: string[];
 }
+
+// difine intertface for project summaries 
+export interface TProjectSummary {
+  basicInfo: {
+    title: string;
+    slug: string;
+    description: string;
+  };
+  meta: {
+    status: string;
+    category: string;
+    client: string;
+    timeframe: string;
+  };
+  _id: string;
+  screenshots: string[];
+}

@@ -58,7 +58,7 @@ const SideBarInfo = React.memo(() => (
 
 const SideBarFooter = React.memo(() => (
   <div className="w-full flex justify-center">
-    <ActionBtn text="contact me" Icon={MdOutgoingMail} href="contact" />
+    <ActionBtn text="contact me" Icon={MdOutgoingMail} href="http://localhost:3000/contact" />
   </div>
 ));
 

@@ -15,6 +15,8 @@ import UiWrapper from "./ui/UiWrapper";
 import Section from "./ui/Section";
 import Skills from "./ui/Skills";
 import ProjectCard from "./ui/ProjectCard";
+import ProjectList from "./ui/ProjectList";
+
 
 
 
@@ -150,7 +152,27 @@ export default function Home() {
       {/* my story section end  */}
      <Section id="project-section" className="mb-[40px]">
         <SectionTitle title="My projects" number="02" />
-        <ProjectCard/>
+        {/* <ProjectCard project={
+          {
+            basicInfo: {
+              title: "Portfolio Website",
+              slug: "portfolio-website",
+              description: "A personal portfolio website showcasing my skills and projects.",
+            },
+            meta: {
+              status: "completed",
+              category: "web-development",
+              client: "Self",
+              timeframe: "Jan 2023 – Mar 2023",
+            },
+            _id: "1",
+            screenshots: [
+              "/screenshots/portfolio1.jpg",
+              "/screenshots/portfolio2.jpg",
+            ],
+          }
+        }/> */}
+        <ProjectList/>
 
       </Section>
       {/* video resume start  */}

@@ -1,14 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import Banner from "../ui/Banner.jsx";
-import Sidebar from "../ui/sidebar";
+import Sidebar from "../ui/sidebar.jsx";
 import { FaPlay } from "react-icons/fa6";
 
-import SectionTitle from "../ui/SectionTitle";
+import SectionTitle from "../ui/SectionTitle.jsx";
 
-import ProjectCard from "../ui/ProjectCard.jsx";
+// import ProjectCard from "../ui/ProjectCard.jsx";
 import UiWrapper from "../ui/UiWrapper.jsx";
-import Section from "../ui/Section.jsx";
+import Section from "../ui/Section";
+import ProjectList from "../ui/ProjectList";
+
+
+
 
 export default function Portfolio() {
   const bannerContent = (
@@ -25,9 +29,9 @@ export default function Portfolio() {
     pageName: "portfolio",
   };
   return (
-    <UiWrapper bannerProps={bannerProps}>
+    <UiWrapper bannerProps={bannerProps} layoutStyles={{}}>
       <Section id="projects">
-        <ProjectCard />
+     <ProjectList/>
       </Section>
       {/* <section className="my-[20px]">
         
